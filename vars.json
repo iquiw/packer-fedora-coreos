@@ -1,0 +1,6 @@
+{
+  "iso_url": "https://builds.coreos.fedoraproject.org/prod/streams/testing/builds/30.20190905.0/x86_64/fedora-coreos-30.20190905.0-installer.iso",
+  "iso_checksum": "838d38a733aaac4f53304bde19889008366da5316619ee4f47b46dd82c512437",
+  "ignition_url": "https://raw.githubusercontent.com/iquiw/packer-fedora-coreos/master/ignition.cfg",
+  "raw_url": "https://builds.coreos.fedoraproject.org/prod/streams/testing/builds/30.20190905.0/x86_64/fedora-coreos-30.20190905.0-metal.raw.xz"
+}

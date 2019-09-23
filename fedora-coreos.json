@@ -1,0 +1,34 @@
+{
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "guest_os_type": "Linux_64",
+      "iso_url": "{{user `iso_url`}}",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "iso_checksum_type": "sha256",
+      "memory": 2048,
+      "ssh_username": "vagrant",
+      "ssh_private_key_file": "id_rsa",
+      "shutdown_command": "sudo /sbin/shutdown -P -h now",
+      "boot_command": [
+        "<enter>",
+        "<wait15s>",
+        "<enter>",
+        "/usr/libexec/coreos-installer -d sda -i {{user `ignition_url`}} -b {{user `raw_url`}}",
+        "<enter>",
+        "reboot",
+        "<enter>",
+        "<wait1m>"
+      ],
+      "boot_wait": "5s"
+    }
+  ],
+  "provisioners": [],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "fedora-coreos.box",
+      "compression_level": 9
+    }
+  ]
+}

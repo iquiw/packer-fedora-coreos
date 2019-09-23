@@ -1,0 +1,59 @@
+* Packer Fedora CoreOS
+:PROPERTIES:
+:ID:       d7fbb31a-f93d-4126-a247-b79a008a3d45
+:END:
+
+#+BEGIN_SRC yaml :padline no :tangle ignition.yml
+variant: fcos
+version: 1.0.0
+passwd:
+  users:
+    - name: vagrant
+      ssh_authorized_keys:
+        - "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA6NF8iallvQVp22WDkTkyrtvp9eWW6A8YVr+kz4TjGYe7gHzIw+niNltGEFHzD8+v1I2YJ6oXevct1YeS0o9HZyN1Q9qgCgzUFtdOKLv6IedplqoPkcmF0aYet2PkEDo3MlTBckFXPITAMzF8dJSIFo9D8HfdOV0IAdx4O7PtixWKn5y2hMNG0zQPyUecp4pzC6kivAIhyfHilFR61RGL+GPXQ2MWZWFYbAGjyiYJnAmCP3NOTd0jMZEnDkbUvxhMmBYSdETk1rRgm+R4LOzFUGaHqHDLKLX+FIPKcF96hrucXzcWyLbIbEgE98OHlnVYCzRdK8jlqm8tehUc9c9WhQ== vagrant insecure public key"
+      groups:
+        - wheel
+        - sudo
+        - docker
+#+END_SRC
+
+#+BEGIN_SRC sh :results output verbatim :wrap "SRC json :padline no :tangle ignition.cfg"
+fcct -strict -pretty -input ignition.yml
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC json :padline no :tangle ignition.cfg
+
+{
+  "ignition": {
+    "config": {
+      "replace": {
+        "source": null,
+        "verification": {}
+      }
+    },
+    "security": {
+      "tls": {}
+    },
+    "timeouts": {},
+    "version": "3.0.0"
+  },
+  "passwd": {
+    "users": [
+      {
+        "groups": [
+          "wheel",
+          "sudo",
+          "docker"
+        ],
+        "name": "vagrant",
+        "sshAuthorizedKeys": [
+          "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA6NF8iallvQVp22WDkTkyrtvp9eWW6A8YVr+kz4TjGYe7gHzIw+niNltGEFHzD8+v1I2YJ6oXevct1YeS0o9HZyN1Q9qgCgzUFtdOKLv6IedplqoPkcmF0aYet2PkEDo3MlTBckFXPITAMzF8dJSIFo9D8HfdOV0IAdx4O7PtixWKn5y2hMNG0zQPyUecp4pzC6kivAIhyfHilFR61RGL+GPXQ2MWZWFYbAGjyiYJnAmCP3NOTd0jMZEnDkbUvxhMmBYSdETk1rRgm+R4LOzFUGaHqHDLKLX+FIPKcF96hrucXzcWyLbIbEgE98OHlnVYCzRdK8jlqm8tehUc9c9WhQ== vagrant insecure public key"
+        ]
+      }
+    ]
+  },
+  "storage": {},
+  "systemd": {}
+}
+#+END_SRC
