@@ -3,6 +3,20 @@
 :ID:       d7fbb31a-f93d-4126-a247-b79a008a3d45
 :END:
 
+#+BEGIN_SRC sh :file vars.json
+jq '.architectures.x86_64.artifacts.metal.formats as $formats |
+  ($formats["installer.iso"].disk | {
+    iso_url: .location,
+    iso_checksum: .sha256,
+    ignition_url: "https://raw.githubusercontent.com/iquiw/packer-fedora-coreos/master/ignition.cfg",
+  }) + {
+    raw_url: $formats["raw.xz"].disk.location
+  }' fedora-coreos-streams/streams/testing.json
+#+END_SRC
+
+#+RESULTS:
+[[file:vars.json]]
+
 #+BEGIN_SRC yaml :padline no :tangle ignition.yml
 variant: fcos
 version: 1.0.0
