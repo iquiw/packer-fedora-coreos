@@ -1,0 +1,3 @@
+[submodule "fedora-coreos-streams"]
+	path = fedora-coreos-streams
+	url = https://github.com/coreos/fedora-coreos-streams.git
