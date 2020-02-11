@@ -3,9 +3,9 @@
 :ID:       d7fbb31a-f93d-4126-a247-b79a008a3d45
 :END:
 
-#+BEGIN_SRC sh :file vars.json
+#+BEGIN_SRC sh :results file :file vars.json
 jq '.architectures.x86_64.artifacts.metal.formats as $formats |
-  ($formats["installer.iso"].disk | {
+  ($formats["iso"].disk | {
     iso_url: .location,
     iso_checksum: .sha256,
     ignition_url: "https://raw.githubusercontent.com/iquiw/packer-fedora-coreos/master/ignition.cfg",
