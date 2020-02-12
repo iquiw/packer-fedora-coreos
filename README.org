@@ -3,7 +3,7 @@
 :ID:       d7fbb31a-f93d-4126-a247-b79a008a3d45
 :END:
 
-#+BEGIN_SRC sh :results file :file vars.json
+#+begin_src sh :results file :file vars.json
 jq '.architectures.x86_64.artifacts.metal.formats as $formats |
   ($formats["iso"].disk | {
     iso_url: .location,
@@ -12,12 +12,12 @@ jq '.architectures.x86_64.artifacts.metal.formats as $formats |
   }) + {
     raw_url: $formats["raw.xz"].disk.location
   }' fedora-coreos-streams/streams/testing.json
-#+END_SRC
+#+end_src
 
 #+RESULTS:
 [[file:vars.json]]
 
-#+BEGIN_SRC yaml :padline no :tangle ignition.yml
+#+begin_src yaml :padline no :tangle ignition.yml
 variant: fcos
 version: 1.0.0
 passwd:
@@ -29,14 +29,14 @@ passwd:
         - wheel
         - sudo
         - docker
-#+END_SRC
+#+end_src
 
-#+BEGIN_SRC sh :results output verbatim :wrap "SRC json :padline no :tangle ignition.cfg"
+#+begin_src sh :results output verbatim :wrap "src json :padline no :tangle ignition.cfg"
 fcct -strict -pretty -input ignition.yml
-#+END_SRC
+#+end_src
 
 #+RESULTS:
-#+BEGIN_SRC json :padline no :tangle ignition.cfg
+#+begin_src json :padline no :tangle ignition.cfg
 
 {
   "ignition": {
@@ -70,4 +70,4 @@ fcct -strict -pretty -input ignition.yml
   "storage": {},
   "systemd": {}
 }
-#+END_SRC
+#+end_src
