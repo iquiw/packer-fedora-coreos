@@ -12,13 +12,15 @@
       "shutdown_command": "sudo /sbin/shutdown -P -h now",
       "boot_command": [
         "<enter>",
-        "<wait15s>",
+        "<wait30s>",
+        "curl -sLo /tmp/ignition.cfg {{user `ignition_url`}}",
         "<enter>",
-        "/usr/libexec/coreos-installer -d sda -i {{user `ignition_url`}} -b {{user `raw_url`}}",
+        "sudo /usr/bin/coreos-installer install -i /tmp/ignition.cfg -u {{user `raw_url`}} /dev/sda",
         "<enter>",
+        "<wait3m>",
         "reboot",
         "<enter>",
-        "<wait1m>"
+        "<wait30s>"
       ],
       "boot_wait": "5s"
     }
