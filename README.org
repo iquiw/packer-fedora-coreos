@@ -11,7 +11,7 @@ jq '.architectures.x86_64.artifacts.metal.formats as $formats |
     ignition_url: "https://raw.githubusercontent.com/iquiw/packer-fedora-coreos/master/ignition.cfg",
   }) + {
     raw_url: $formats["raw.xz"].disk.location
-  }' fedora-coreos-streams/streams/testing.json
+  }' fedora-coreos-streams/streams/stable.json
 #+end_src
 
 #+RESULTS:
