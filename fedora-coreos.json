@@ -6,7 +6,7 @@
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "sha256",
-      "memory": 2048,
+      "memory": 3072,
       "ssh_username": "vagrant",
       "ssh_private_key_file": "id_rsa",
       "shutdown_command": "sudo /sbin/shutdown -P -h now",
