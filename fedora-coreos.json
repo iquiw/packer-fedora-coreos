@@ -12,9 +12,7 @@
       "boot_command": [
         "<enter>",
         "<wait30s>",
-        "curl -sLo /tmp/ignition.cfg {{user `ignition_url`}}",
-        "<enter>",
-        "sudo /usr/bin/coreos-installer install -i /tmp/ignition.cfg -u {{user `raw_url`}} /dev/sda",
+        "sudo /usr/bin/coreos-installer install -I {{user `ignition_url`}} -u {{user `raw_url`}} /dev/sda",
         "<enter>",
         "<wait3m>",
         "reboot",
