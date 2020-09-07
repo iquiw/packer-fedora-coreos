@@ -19,7 +19,17 @@ jq '.architectures.x86_64.artifacts.metal.formats as $formats |
 
 #+begin_src yaml :padline no :tangle ignition.yml
 variant: fcos
-version: 1.0.0
+version: 1.1.0
+storage:
+  files:
+    - path: /etc/fstab
+      contents:
+        inline: ""
+      mode: 0644
+      user:
+        id: 0
+      group:
+        id: 0
 passwd:
   users:
     - name: vagrant
@@ -32,25 +42,14 @@ passwd:
 #+end_src
 
 #+begin_src sh :results output verbatim :wrap "src json :padline no :tangle ignition.cfg"
-fcct -strict -pretty -input ignition.yml
+fcct --strict --pretty ignition.yml
 #+end_src
 
 #+RESULTS:
 #+begin_src json :padline no :tangle ignition.cfg
-
 {
   "ignition": {
-    "config": {
-      "replace": {
-        "source": null,
-        "verification": {}
-      }
-    },
-    "security": {
-      "tls": {}
-    },
-    "timeouts": {},
-    "version": "3.0.0"
+    "version": "3.1.0"
   },
   "passwd": {
     "users": [
@@ -67,7 +66,22 @@ fcct -strict -pretty -input ignition.yml
       }
     ]
   },
-  "storage": {},
-  "systemd": {}
+  "storage": {
+    "files": [
+      {
+        "group": {
+          "id": 0
+        },
+        "path": "/etc/fstab",
+        "user": {
+          "id": 0
+        },
+        "contents": {
+          "source": "data:,"
+        },
+        "mode": 420
+      }
+    ]
+  }
 }
 #+end_src
