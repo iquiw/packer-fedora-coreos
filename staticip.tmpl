@@ -1,0 +1,15 @@
+    - path: /etc/NetworkManager/system-connections/enp0s8.nmconnection
+      mode: 0600
+      overwrite: true
+      contents:
+        inline: |
+          [connection]
+          type=ethernet
+          id='Host Only'
+          interface-name=enp0s8
+
+          [ipv4]
+          method=manual
+          addresses=@STATIC_IP@
+          gateway=@GATEWAY@
+          dns=@DNS_SERVER@

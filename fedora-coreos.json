@@ -12,7 +12,7 @@
       "boot_command": [
         "<enter>",
         "<wait30s>",
-        "sudo /usr/bin/coreos-installer install -I {{user `ignition_url`}} -u {{user `raw_url`}} /dev/sda",
+        "sudo /usr/bin/coreos-installer install -I {{user `ignition_url`}} {{user `ignition_hash`}} -u {{user `raw_url`}} /dev/sda",
         "<enter>",
         "<wait5m>",
         "reboot",
