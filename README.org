@@ -17,12 +17,12 @@ sh build.sh
 #+end_src
 
 *** Static IP
-Run build.sh to build Fedora CoreOS box with static IP setting.
+Run build-staticip.sh to build Fedora CoreOS box with static IP setting.
 Specify server IP where ~coreos-installer~ downloads ignition.cfg as 1st argument.
 Specify box IP address, gateway IP address, DNS servers as 2nd, 3rd, 4th arguments.
 
 #+begin_src sh
-sh build.sh 192.168.56.1 192.168.56.100/24 192.168.56.1 1.1.1.1
+sh build-staticip.sh 192.168.56.1 192.168.56.100/24 192.168.56.1 1.1.1.1
 #+end_src
 
 ** Preparation
