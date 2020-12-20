@@ -117,3 +117,6 @@ fcct --strict --pretty ignition.yml
   }
 }
 #+end_src
+
+** License
+MIT
