@@ -13,7 +13,7 @@ case $# in
 esac
 
 (cat ignition.yml; sed -e "s,@STATIC_IP@,$static_ip,; s,@GATEWAY@,$gateway,; s,@DNS_SERVER@,$dns_server,;" staticip.tmpl ) |
-	fcct --pretty --strict > ignition-staticip.cfg
+	butane --pretty --strict > ignition-staticip.cfg
 
 hash=$(sha256sum ignition-staticip.cfg | awk '{ print $1 }')
 

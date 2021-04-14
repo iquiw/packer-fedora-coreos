@@ -7,7 +7,7 @@ Packer build scripts for VirtualBox.
 - [[https://www.packer.io/][packer]]
 - bash
 - curl
-- [[https://coreos.github.io/fcct/][fcct]], [[https://github.com/cortesi/devd][devd]], cat, sed, sha256sum for Static IP
+- [[https://coreos.github.io/butane/][butane]], [[https://github.com/cortesi/devd][devd]], cat, sed, sha256sum for Static IP
 
 *** Base
 Run build.sh to build base Fedora CoreOS box.
@@ -71,10 +71,10 @@ storage:
         id: 0
 #+end_src
 
-*** Transpile by fcct
+*** Translate by butane
 
 #+begin_src sh :results output verbatim :wrap "src json :padline no :tangle ignition.cfg"
-fcct --strict --pretty ignition.yml
+butane --strict --pretty ignition.yml
 #+end_src
 
 #+RESULTS:
