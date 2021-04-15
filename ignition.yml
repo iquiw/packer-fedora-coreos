@@ -19,3 +19,9 @@ storage:
         id: 0
       group:
         id: 0
+    # https://github.com/coreos/fedora-coreos-docs/blob/master/modules/ROOT/pages/faq.adoc#why-does-ssh-stop-working-after-upgrading-to-fedora-33
+    - path: /etc/ssh/sshd_config.d/10-insecure-rsa-keysig.conf
+      mode: 0600
+      contents:
+        inline: |
+          PubkeyAcceptedKeyTypes=+ssh-rsa
