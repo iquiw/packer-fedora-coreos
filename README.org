@@ -7,7 +7,7 @@ Packer build scripts for VirtualBox.
 - [[https://www.packer.io/][packer]]
 - bash
 - curl
-- [[https://coreos.github.io/butane/][butane]], [[https://github.com/cortesi/devd][devd]], cat, sed, sha256sum for Static IP
+- [[https://coreos.github.io/butane/][butane]], python3, cat, sed, sha256sum for Static IP
 
 *** Base
 Run build.sh to build base Fedora CoreOS box.
@@ -46,6 +46,9 @@ jq '.architectures.x86_64.artifacts.metal.formats as $formats |
 [[file:vars.json]]
 
 *** Configure ignition setting
+:PROPERTIES:
+:ID:       794edebd-0930-42f1-b47a-1b41617aeec8
+:END:
 
 #+begin_src yaml :padline no :tangle ignition.yml
 variant: fcos
@@ -78,6 +81,9 @@ storage:
 #+end_src
 
 *** Translate by butane
+:PROPERTIES:
+:ID:       d310c0be-3346-4a82-9e7f-d0b05fcef5ec
+:END:
 
 #+begin_src sh :results output verbatim :wrap "src json :padline no :tangle ignition.cfg"
 butane --strict --pretty ignition.yml

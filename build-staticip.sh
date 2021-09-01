@@ -17,13 +17,13 @@ esac
 
 hash=$(sha256sum ignition-staticip.cfg | awk '{ print $1 }')
 
-devd -A "$local_ip" . &
-devd_pid=$!
+python3 -mhttp.server -b "$local_ip" &
+python_pid=$!
 
 if [ ! -f id_rsa ]; then
 	curl -o id_rsa https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant
 fi
 
-packer build -var ignition_url="http://$local_ip/ignition-staticip.cfg" -var ignition_hash="--ignition-hash sha256-$hash" -var-file vars.json fedora-coreos.json
+packer build -var ignition_url="http://$local_ip:8000/ignition-staticip.cfg" -var ignition_hash="--ignition-hash sha256-$hash" -var-file vars.json fedora-coreos.json
 
-kill "$devd_pid"
+kill "$python_pid"
