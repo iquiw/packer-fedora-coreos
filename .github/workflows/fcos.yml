@@ -2,7 +2,7 @@ name: fcos
 
 on:
   schedule:
-    - cron: '40 5 * * *'
+    - cron: '20 6 * * *'
 
 jobs:
   checkAndPR:
@@ -17,7 +17,8 @@ jobs:
       - name: Pull fedora-coreos-streams
         run: |
           cd fedora-coreos-streams
-          git pull --ff-only
+          git fetch origin
+          git reset --hard origin/main
           jq '.architectures.x86_64.artifacts.metal.formats as $formats |
               ($formats["iso"].disk | {
                  iso_url: .location,
