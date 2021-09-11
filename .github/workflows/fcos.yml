@@ -2,7 +2,7 @@ name: fcos
 
 on:
   schedule:
-    - cron: '10 8 * * *'
+    - cron: '0 20 * * *'
 
 jobs:
   checkAndPR:
