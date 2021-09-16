@@ -16,6 +16,7 @@ jobs:
 
       - name: Pull fedora-coreos-streams
         run: |
+          old_hash=$(sha256sum vars.json)
           cd fedora-coreos-streams
           git fetch origin
           git reset --hard origin/main
@@ -27,6 +28,12 @@ jobs:
                }) + {
                  raw_url: $formats["raw.xz"].disk.location
           }' streams/stable.json > ../vars.json
+          cd ..
+          new_hash=$(sha256sum vars.json)
+          if [ "$old_hash" = "$new_hash" ]; then
+              # no update, reset submodule change
+              git submodule update
+          fi
 
       - name: Set release version
         id: fcos-version
