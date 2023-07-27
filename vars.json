@@ -1,6 +1,6 @@
 {
-  "iso_url": "https://builds.coreos.fedoraproject.org/prod/streams/stable/builds/38.20230625.3.0/x86_64/fedora-coreos-38.20230625.3.0-live.x86_64.iso",
-  "iso_checksum": "9ba1f05947a34bee54b08cf3411f41964ae98b1f5f5a4c01e4ce6539089b4d3a",
+  "iso_url": "https://builds.coreos.fedoraproject.org/prod/streams/stable/builds/38.20230709.3.0/x86_64/fedora-coreos-38.20230709.3.0-live.x86_64.iso",
+  "iso_checksum": "89faf8eccad95f3b15dfad591389d474940883997e2741a4e755e8f0a132685b",
   "ignition_url": "https://raw.githubusercontent.com/iquiw/packer-fedora-coreos/master/ignition.cfg",
-  "raw_url": "https://builds.coreos.fedoraproject.org/prod/streams/stable/builds/38.20230625.3.0/x86_64/fedora-coreos-38.20230625.3.0-metal.x86_64.raw.xz"
+  "raw_url": "https://builds.coreos.fedoraproject.org/prod/streams/stable/builds/38.20230709.3.0/x86_64/fedora-coreos-38.20230709.3.0-metal.x86_64.raw.xz"
 }
