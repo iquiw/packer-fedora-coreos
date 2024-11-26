@@ -24,6 +24,6 @@ if [ ! -f id_rsa ]; then
 	curl -o id_rsa https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant
 fi
 
-packer build -var ignition_url="http://$local_ip:8000/ignition-staticip.cfg" -var ignition_hash="--ignition-hash sha256-$hash" -var-file vars.json fedora-coreos.json
+packer build -var ignition_url="http://$local_ip:8000/ignition-staticip.cfg" -var ignition_hash="sha256-$hash" -var-file vars.json fedora-coreos.pkr.hcl
 
 kill "$python_pid"

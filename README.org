@@ -9,6 +9,13 @@ Packer build scripts for VirtualBox.
 - curl
 - [[https://coreos.github.io/butane/][butane]], python3, cat, sed, sha256sum for Static IP
 
+*** Initial Setup
+Initialize packer.
+
+#+begin_src sh
+packer init fedora-coreos.pkr.hcl
+#+end_src
+
 *** Base
 Run build.sh to build base Fedora CoreOS box.
 
